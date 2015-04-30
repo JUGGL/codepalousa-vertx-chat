@@ -1,0 +1,17 @@
+<html>
+<head>
+  <title>Distributed Chat Service</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="//cdn.jsdelivr.net/sockjs/0.3.4/sockjs.min.js"></script>
+  <script src="vertxbus.js"></script>
+  <script src="app.js"></script>
+  <link href="styles.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+Name: <input id="name" type="text" size="40">
+<div id="chat" class="inset"></div>
+<input id="input" type="text" onkeydown="keyUpEvent(event)" class="inset" disabled>
+</body>
+</html>
