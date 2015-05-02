@@ -11,6 +11,8 @@ http://slides.com/devenphillips/codepalousa-2015-vertx/
 
 ## Speaker's Notes
 
+We will generate a new *stub* application using a [Maven](http://maven.apache.org/) archetype.
+
     mvn archetype:generate -DarchetypeGroupId=com.zanclus.codepalousa -DarchetypeArtifactId=vertx-js-archetype
 
 After creating the maven project from the Archetype, we will be left with a new stub project which has a single verticle:
