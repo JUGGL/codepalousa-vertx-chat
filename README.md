@@ -22,12 +22,18 @@ After creating the maven project from the Archetype, we will be left with a new 
 Initially, this fille will ONLY contain:
 
     /* global vertx */
+    /* global console */
+
+    // When Vert.x creates a new verticle, the "vertx" instance is already part of the scope, so we do not need to declare it.
+
+    console.log("Main verticle deployed.");
 
 This is a JSlint "hint" to let us know that whenever Vert.x loads a JavaScript file, the "vertx" object is already created as a global variable in our scope.
 
 Here's the JavaScript code for a simple web server which returns "Hello Vert.x!":
 
     /* global vertx */
+    /* global console */
     var server = vertx.createHttpServer();
     server.requestHandler(function(req) {
       req.response().putHeader("Content-Type", "text/html").end("<html><body><h1>Hello Vert.x!</h1></body></html>");
@@ -44,6 +50,7 @@ Let's dissect this a bit to make sure that we understand what is happening.
 We could shorten this up a bit if we like by using the fluent APIs of Vert.x:
 
     /* global vertx */
+    /* global console */
     vertx.createHttpServer().requestHandler(function(req) {
         req.response().putHeader("Content-Type", "text/html").end("<html><body><h1>Hello Vert.x!</h1></body></html>");
     }).listen(9080);
@@ -55,6 +62,7 @@ Next, let's create a second verticle.. In the same folder as *main.js*, create *
 Now, we will tell Vert.x to use the event bus to listen for messages:
 
     /* global vertx */
+    /* global console */
     
     // Get a reference to the event bus from the global "vertx" instance
     var eb = vertx.eventBus();
@@ -72,6 +80,7 @@ This is another simple Verticle which makes use of some core functionality in Ve
 Now, let's have our HTTP server send pings every time we make an HTTP request:
 
     /* global vertx */
+    /* global console */
     var server = vertx.createHttpServer();
     
     // Here, we are deploying another verticle programmatically
@@ -116,6 +125,7 @@ NOTE!!! When you run this inside of a docker container or a VM you will have to 
 Now, let's turn this into a basic static HTTP server which will return content based on the requested path/filename..
 
     /* global vertx */
+    /* global console */
     var server = vertx.createHttpServer();
     
     // This is the path from which our web server will try to serve files.
@@ -149,6 +159,7 @@ The sendFile() function runs asynchronously, so it may not complete until some t
 OK, serving static content is pretty simple. Let's move more into the “web application” realm. This requires the use of the [Vert.x Apex extension](http://vert-x3.github.io/docs/vertx-apex/js/). Apex provides tools for making more complex web applications. 
 
     /* global vertx */
+    /* global console */
     var server = vertx.createHttpServer();
     
     var Router = require("vertx-apex-js/router");
@@ -165,6 +176,7 @@ OK, serving static content is pretty simple. Let's move more into the “web app
 The Router allows us to specify the exact request path which our handler will be called for. You can specify multiple handlers for a single path and call routingContext.next() in order to have the “next” handler also write to the output stream.
 
     /* global vertx */
+    /* global console */
     var server = vertx.createHttpServer();
     
     var Router = require("vertx-apex-js/router");
@@ -200,6 +212,7 @@ The Router allows us to specify the exact request path which our handler will be
 But static URLs SUCK, so let's make it more useful!
 
     /* global vertx */
+    /* global console */
     var server = vertx.createHttpServer();
     
     var Router = require("vertx-apex-js/router");
@@ -229,6 +242,7 @@ This is demonstrating how to insert path parameters into the router so that it i
 But for ReST APIs, we will want to break out the different HTTP methods:
 
     /* global vertx */
+    /* global console */
     var server = vertx.createHttpServer();
     
     var Router = require("vertx-apex-js/router");
@@ -257,6 +271,7 @@ So, create a new project from the archetype we used in the beginning:
 Let's start with the main verticle… For automatic redeployment purposes, this verticle will do nothing but load our other verticles.
 
     /* global vertx */
+    /* global console */
     var verticleId = vertx.deployVerticle("com/codepalousa/vertx/webserver.js");
     var verticleId = vertx.deployVerticle("com/codepalousa/vertx/chat.js");
 
@@ -265,6 +280,7 @@ Because of how the automatic redeloyment works, the main verticle cannot be relo
 Next, we create our webserver.js verticle:
 
     /* global vertx */
+    /* global console */
     var Router = require("vertx-apex-js/router");
     var SockJSHandler = require("vertx-apex-js/sock_js_handler");
     var StaticHandler = require("vertx-apex-js/static_handler");
@@ -363,6 +379,7 @@ OK, we'll come back to the web content in a bit..
 Next, we need a *chat.js* verticle to handle event bus messages from the client.
 
     /* global vertx */
+    /* global console */
     var eb = vertx.eventBus();
 
     // Receive message from the browser and then broadcast that message back out to all connected clients.
