@@ -14,7 +14,7 @@ http://slides.com/devenphillips/codepalousa-2015-vertx/
 ### Prerequisites
 * Java 8
 * Maven
-* Vert.x Distribution (Added to PATH)
+* Vert.x Distribution (Added to PATH - OPTIONAL)
 
 ### Commands
 ```bash
