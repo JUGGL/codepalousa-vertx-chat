@@ -9,6 +9,19 @@ updated as errors are found or improvements are discovered.
 
 http://slides.com/devenphillips/codepalousa-2015-vertx/
 
+## Running this example
+
+### Prerequisites
+* Java 8
+* Maven
+* Vert.x Distribution (Added to PATH)
+
+### Commands
+```bash
+mvn clean compile exec:java
+```
+The application will run and listen for HTTP requests on http://localhost:9080/
+
 ## Speaker's Notes
 
 We will generate a new *stub* application using a [Maven](http://maven.apache.org/) archetype.
