@@ -1,5 +1,7 @@
 # codepalousa-vertx-chat-example
 
+[![Build Status](https://travis-ci.org/JUGGL/codepalousa-vertx-chat.svg)](https://travis-ci.org/InfoSec812/codepalousa-vertx-chat)
+
 ## Overview
 This project is a presentation which was originally created for Code PaLOUsa 2015 (http://codepalousa.com) to demonstrate 
 writing reactive/clustered application in Vert.x using JavaScript. The content below is the speaker's notes and are 
